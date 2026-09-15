@@ -1,0 +1,7 @@
+---
+interface Props { label: 'Live' | 'In progress' | 'Archived' }
+const { label } = Astro.props;
+const dot = { Live: 'var(--success)', 'In progress': 'var(--blue-500)', Archived: 'var(--ink-300)' }[label];
+---
+<span class="chip"><span class="d" style={`background:${dot}`}></span>{label}</span>
+<style>.chip{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg2)}.d{width:7px;height:7px;border-radius:999px;flex:0 0 auto}</style>

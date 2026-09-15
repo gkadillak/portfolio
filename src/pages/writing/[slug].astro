@@ -1,0 +1,77 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Spark from '../../components/Spark.astro';
+import ArrowLink from '../../components/ArrowLink.astro';
+import { accentVars, accents } from '../../data/site';
+
+export async function getStaticPaths() {
+  const writing = (await getCollection('writing')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+  return writing.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, next: writing[(i + 1) % writing.length] },
+  }));
+}
+
+type Entry = CollectionEntry<'writing'>;
+const { entry, next } = Astro.props as { entry: Entry; next: Entry };
+const a = entry.data;
+const { Content } = await render(entry);
+---
+<Base title={`${a.title} — Garrett Kadillak`} description={a.dek} active="writing">
+  <div style={accentVars(a.accent)}>
+    <div class="band"></div>
+
+    <section class="wrap back"><ArrowLink href="/writing" color="var(--fg2)" reverse>All writing</ArrowLink></section>
+
+    <header class="wrap titleblock">
+      <span class="mono mono-a mono-13 kick">{a.kicker} · {a.read} read · {a.date}</span>
+      <h1 class="display">{a.title}</h1>
+      <p class="lede">{a.lede}</p>
+    </header>
+
+    <div class="divider"><Spark size={22} color={accents[a.accent].solid} /></div>
+
+    <article class="wrap">
+      <div class="prose prose--dropcap"><Content /></div>
+      <div class="signoff">
+        <Spark size={18} color="var(--fg3)" />
+        <span class="mono mono-dim">That's everything for now. More soon.</span>
+      </div>
+    </article>
+
+    <section class="wrap nextsec">
+      <a href={`/writing/${next.id}`} class="next">
+        <span class="bullet" style={`background:${accents[next.data.accent].solid}`}></span>
+        <div class="grow">
+          <span class="mono mono-dim label">Next to read</span>
+          <span class="nexttitle">{next.data.title}</span>
+        </div>
+        <span class="g">→</span>
+      </a>
+    </section>
+  </div>
+</Base>
+<style>
+.band{height:6px;background:var(--a)}
+.back{padding-top:36px}
+.titleblock{padding-top:40px;text-align:center}
+.kick{display:block;margin-bottom:22px}
+h1{max-width:var(--measure);margin-inline:auto;font-size:clamp(2.25rem,1.4rem + 3vw,4rem);line-height:1.04;letter-spacing:-.035em}
+.lede{max-width:var(--measure);margin:22px auto 0;font-family:var(--font-serif);font-style:italic;font-size:var(--t-lead);line-height:1.45;color:var(--fg2)}
+.divider{display:flex;justify-content:center;margin:40px 0 8px}
+.prose{--measure:62ch;padding-top:24px}
+.signoff{max-width:62ch;margin:16px auto 0;padding-top:32px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;justify-content:center}
+.nextsec{padding:48px 0 80px}
+.next{max-width:62ch;margin-inline:auto;display:flex;align-items:center;gap:20px;padding:24px 26px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);text-decoration:none;transition:border-color var(--dur),box-shadow var(--dur)}
+.next:hover{border-color:var(--a);box-shadow:var(--shadow-md)}
+.bullet{width:12px;height:12px;border-radius:999px;flex:0 0 auto}
+.grow{flex:1}
+.label{display:block;margin-bottom:6px}
+.nexttitle{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em;color:var(--fg1);transition:color var(--dur) var(--ease-out)}
+.next:hover .nexttitle{color:var(--primary)}
+.next .g{font-size:22px;color:var(--fg2);display:inline-block;transition:transform var(--dur) var(--ease-out)}
+.next:hover .g{transform:translateX(4px)}
+</style>

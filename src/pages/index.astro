@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Cover from '../components/Cover.astro';
+import StatusChip from '../components/StatusChip.astro';
+import ArrowLink from '../components/ArrowLink.astro';
+import { site, accentVars } from '../data/site';
+
+const work = (await getCollection('work')).sort((a, b) => b.data.n.localeCompare(a.data.n));
+const writing = (await getCollection('writing')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const span = `${work.at(-1)!.data.year} / ${work[0].data.year}`;
+---
+<Base title={`${site.name} — ${site.role}`} active="home">
+  <section class="hero wrap">
+    <span class="mono" style="color:var(--primary);display:block;margin-bottom:24px">Frontend engineer · portfolio &amp; writing</span>
+    <h1 class="display">{site.hero.map((l) => <span>{l}</span>)}</h1>
+    <p class="sub">{site.sub}</p>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <span class="mono mono-ink mono-13">Index — selected work</span>
+      <span class="mono mono-13">{span}</span>
+    </div>
+    {work.map((p) => (
+      <a href={`/work/${p.id}`} class="row work-row" style={accentVars(p.data.accent)}>
+        <div class="row-n">{p.data.n}</div>
+        <div>
+          <div class="titleline">
+            <h3 class="row-title">{p.data.title}</h3>
+            <StatusChip label={p.data.status} />
+          </div>
+          <p class="tagline">{p.data.tagline}</p>
+          <div class="meta">
+            <span class="mono mono-dim">{p.data.category}</span><span class="dot"></span>
+            <span class="mono mono-dim">{p.data.year}</span><span class="dot"></span>
+            <span class="mono mono-dim">{p.data.tags.join(' · ')}</span>
+          </div>
+        </div>
+        <Cover accent={p.data.accent} title={p.data.title} src={p.data.cover} height={112} sizes="168px" widths={[168, 336]} class="thumb" />
+      </a>
+    ))}
+  </section>
+
+  <section class="wrap writing">
+    <div class="section-head" style="padding-top:0">
+      <span class="mono mono-ink mono-13">Index — writing</span>
+      <ArrowLink href="/writing" size="13px">Read all</ArrowLink>
+    </div>
+    {writing.map((w) => (
+      <a href={`/writing/${w.id}`} class="row note-row" style={accentVars(w.data.accent)}>
+        <span class="mono mono-dim">{w.data.n}</span>
+        <div>
+          <h3 class="row-title note-title">{w.data.title}</h3>
+          <p class="dek">{w.data.dek}</p>
+        </div>
+        <span class="mono mono-dim when">{w.data.kicker} · {w.data.read}<br />{w.data.date}</span>
+      </a>
+    ))}
+    <div style="height:72px"></div>
+  </section>
+</Base>
+<style>
+.hero{padding-block:72px 48px}
+h1{font-size:clamp(3rem,1rem + 8.5vw,9rem);line-height:.84;margin-left:-.05em}
+h1 span{display:block}
+.sub{font-family:var(--font-serif);font-size:var(--t-lead);line-height:1.5;color:var(--fg2);max-width:48ch;margin:34px 0 0}
+.work-row{grid-template-columns:112px 1fr 168px}
+.work-row .row-n{font-size:64px}
+.note-row{grid-template-columns:112px 1fr 160px;padding-block:26px}
+.titleline{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.row-title{font-weight:700;font-size:40px}
+.note-title{font-weight:600;font-size:27px;letter-spacing:-.02em;margin-bottom:6px}
+.tagline{font-size:16.5px;line-height:1.45;color:var(--fg2);margin:8px 0 14px;max-width:52ch}
+.dek{font-size:15.5px;line-height:1.45;color:var(--fg2);margin:0;max-width:56ch}
+.meta{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.when{text-align:right;line-height:1.6}
+.writing{padding-top:64px}
+@media (max-width:820px){
+  .work-row,.note-row{grid-template-columns:64px 1fr;gap:20px}
+  .work-row .row-n{font-size:40px}
+  .row-title{font-size:30px}
+  .thumb,.when{display:none}
+}
+</style>

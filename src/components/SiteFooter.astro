@@ -1,0 +1,19 @@
+---
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer>
+  <div class="bar wrap">
+    <span class="mono mono-dim">© {year} {site.name} — {site.location}</span>
+    <div class="links">
+      {site.elsewhere.map((l) => <a href={l.href} class="mono">{l.label}</a>)}
+    </div>
+  </div>
+</footer>
+<style>
+footer{border-top:1px solid var(--border);margin-top:8px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-block:40px;flex-wrap:wrap}
+.links{display:flex;gap:26px}
+.links a{text-decoration:none;transition:color var(--dur) var(--ease-out)}
+.links a:hover{color:var(--fg1)}
+</style>

@@ -1,0 +1,27 @@
+---
+import Spark from './Spark.astro';
+import { site } from '../data/site';
+interface Props { active?: 'home' | 'work' | 'writing' }
+const { active } = Astro.props;
+const nav = [
+  { label: 'Index', href: '/', key: 'home' },
+  { label: 'Writing', href: '/writing', key: 'writing' },
+];
+---
+<header>
+  <div class="bar wrap">
+    <a href="/" class="mark"><Spark size={15} />{site.name}</a>
+    <nav>
+      {nav.map((i) => <a href={i.href} class:list={['mono', active === i.key ? 'mono-ink' : '']}>{i.label}</a>)}
+      <a href={`mailto:${site.email}`} class="mono">Email</a>
+    </nav>
+  </div>
+</header>
+<style>
+header{position:sticky;top:0;z-index:20;background:rgba(250,250,247,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-block:18px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--fg1)}
+nav{display:flex;gap:30px}
+nav a{text-decoration:none;transition:color var(--dur) var(--ease-out)}
+nav a:hover{color:var(--fg1)}
+</style>
