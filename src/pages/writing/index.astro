@@ -1,13 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import ArrowLink from '../../components/ArrowLink.astro';
-import { accentVars } from '../../data/site';
+import { getCollection } from "astro:content";
+import ArrowLink from "../../components/ArrowLink.astro";
+import { accentVars } from "../../data/site";
+import Base from "../../layouts/Base.astro";
 
-const writing = (await getCollection('writing')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+const writing = (await getCollection("writing")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-const years = [...new Set(writing.map((w) => w.data.pubDate.getFullYear()))].sort();
+const years = [
+  ...new Set(writing.map((w) => w.data.pubDate.getFullYear())),
+].sort();
 ---
 <Base title="Essays & notes — Garrett Kadillak" active="writing" description="I write to find out what I think.">
   <section class="hero wrap">

@@ -1,14 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
-import Base from '../layouts/Base.astro';
-import Cover from '../components/Cover.astro';
-import StatusChip from '../components/StatusChip.astro';
-import ArrowLink from '../components/ArrowLink.astro';
-import { site, accentVars } from '../data/site';
+import { getCollection } from "astro:content";
+import ArrowLink from "../components/ArrowLink.astro";
+import Cover from "../components/Cover.astro";
+import StatusChip from "../components/StatusChip.astro";
+import { accentVars, site } from "../data/site";
+import Base from "../layouts/Base.astro";
 
-const work = (await getCollection('work')).sort((a, b) => b.data.n.localeCompare(a.data.n));
-const writing = (await getCollection('writing')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+const work = (await getCollection("work")).sort((a, b) =>
+  b.data.n.localeCompare(a.data.n),
+);
+const writing = (await getCollection("writing")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const span = `${work.at(-1)!.data.year} / ${work[0].data.year}`;
 ---

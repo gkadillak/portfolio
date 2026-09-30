@@ -1,7 +1,19 @@
 ---
-interface Props { color?: string; reverse?: boolean; size?: string; href?: string; class?: string }
-const { color = 'var(--primary)', reverse = false, size = '14px', href, class: cls } = Astro.props;
-const Tag = href ? 'a' : 'span';
+interface Props {
+  color?: string;
+  reverse?: boolean;
+  size?: string;
+  href?: string;
+  class?: string;
+}
+const {
+  color = "var(--primary)",
+  reverse = false,
+  size = "14px",
+  href,
+  class: cls,
+} = Astro.props;
+const Tag = href ? "a" : "span";
 ---
 <Tag href={href} class:list={['arrow', cls]} style={`color:${color};font-size:${size}`}>{reverse && <span class="g">←</span>}<slot />{!reverse && <span class="g">→</span>}</Tag>
 <style>.arrow{font-family:var(--font-sans);font-weight:600;display:inline-flex;align-items:center;gap:.5em;text-decoration:none;cursor:pointer}.g{font-size:1.05em;display:inline-block;transition:transform var(--dur) var(--ease-out)}.arrow:hover .g{transform:translateX(3px)}</style>

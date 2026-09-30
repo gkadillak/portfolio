@@ -1,72 +1,67 @@
 {
-  "$ref": "#/definitions/writing",
-  "definitions": {
-    "writing": {
-      "type": "object",
-      "properties": {
-        "n": {
-          "type": "string"
-        },
-        "kicker": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "dek": {
-          "type": "string"
-        },
-        "lede": {
-          "type": "string"
-        },
-        "read": {
-          "type": "string"
-        },
-        "date": {
-          "type": "string"
-        },
-        "pubDate": {
-          "anyOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "string",
-              "format": "date"
-            },
-            {
-              "type": "integer",
-              "format": "unix-time"
-            }
-          ]
-        },
-        "accent": {
-          "type": "string",
-          "enum": [
-            "blue",
-            "cyan",
-            "coral",
-            "ink"
-          ]
-        },
-        "$schema": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "n",
-        "kicker",
-        "title",
-        "dek",
-        "lede",
-        "read",
-        "date",
-        "pubDate",
-        "accent"
-      ],
-      "additionalProperties": false
-    }
-  },
-  "$schema": "http://json-schema.org/draft-07/schema#"
+	"$ref": "#/definitions/writing",
+	"definitions": {
+		"writing": {
+			"type": "object",
+			"properties": {
+				"n": {
+					"type": "string"
+				},
+				"kicker": {
+					"type": "string"
+				},
+				"title": {
+					"type": "string"
+				},
+				"dek": {
+					"type": "string"
+				},
+				"lede": {
+					"type": "string"
+				},
+				"read": {
+					"type": "string"
+				},
+				"date": {
+					"type": "string"
+				},
+				"pubDate": {
+					"anyOf": [
+						{
+							"type": "string",
+							"format": "date-time"
+						},
+						{
+							"type": "string",
+							"format": "date"
+						},
+						{
+							"type": "integer",
+							"format": "unix-time"
+						}
+					]
+				},
+				"accent": {
+					"type": "string",
+					"enum": ["blue", "cyan", "coral", "ink"]
+				},
+				"$schema": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"n",
+				"kicker",
+				"title",
+				"dek",
+				"lede",
+				"read",
+				"date",
+				"pubDate",
+				"accent"
+			],
+			"additionalProperties": false
+		}
+	},
+	"$schema": "http://json-schema.org/draft-07/schema#"
 }

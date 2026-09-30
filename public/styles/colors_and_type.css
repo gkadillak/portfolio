@@ -6,174 +6,182 @@
    woff2 files into /fonts and swap the @import for @font-face declarations.
    ========================================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=JetBrains+Mono:wght@400;500;700&display=swap");
 
 /* Self-hosted brand font (uploaded). Average Sans ships a single Regular
    master; medium/semibold weights synthesize. Used for UI + body copy. */
 @font-face {
-  font-family: 'Average Sans';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url('/fonts/AverageSans-Regular.ttf') format('truetype');
+	font-family: "Average Sans";
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/AverageSans-Regular.ttf") format("truetype");
 }
 
 :root {
-  /* ----------------------------------------------------------------------
+	/* ----------------------------------------------------------------------
      COLOR — PRIMARY (Electric Blue)
      The hero of the brand. blue-600 is the default "Lumen Blue".
      ---------------------------------------------------------------------- */
-  --blue-50:  #EAF1FF;
-  --blue-100: #D4E2FF;
-  --blue-200: #ACC7FF;
-  --blue-300: #7EA6FF;
-  --blue-400: #4D83FF;
-  --blue-500: #245BFF;  /* bright */
-  --blue-600: #1A4BF5;  /* ← Lumen Blue (primary) */
-  --blue-700: #1239C7;
-  --blue-800: #102E9B;
-  --blue-900: #112A78;
-  --blue-950: #0A1747;
+	--blue-50: #eaf1ff;
+	--blue-100: #d4e2ff;
+	--blue-200: #acc7ff;
+	--blue-300: #7ea6ff;
+	--blue-400: #4d83ff;
+	--blue-500: #245bff; /* bright */
+	--blue-600: #1a4bf5; /* ← Lumen Blue (primary) */
+	--blue-700: #1239c7;
+	--blue-800: #102e9b;
+	--blue-900: #112a78;
+	--blue-950: #0a1747;
 
-  /* ----------------------------------------------------------------------
+	/* ----------------------------------------------------------------------
      COLOR — ACCENTS (used sparingly, for energy)
      ---------------------------------------------------------------------- */
-  --cyan:        #00C2FF;  /* electric cyan — links-in-dark, highlights */
-  --cyan-soft:   #BDEEFF;
-  --citron:      #DBFF47;  /* highlighter / marker pops */
-  --citron-soft: #F2FFB0;
-  --coral:       #FF5A47;  /* rare warm pop / error-adjacent */
+	--cyan: #00c2ff; /* electric cyan — links-in-dark, highlights */
+	--cyan-soft: #bdeeff;
+	--citron: #dbff47; /* highlighter / marker pops */
+	--citron-soft: #f2ffb0;
+	--coral: #ff5a47; /* rare warm pop / error-adjacent */
 
-  /* ----------------------------------------------------------------------
+	/* ----------------------------------------------------------------------
      COLOR — NEUTRALS (cool ink on warm paper)
      ---------------------------------------------------------------------- */
-  --ink-950: #0A0D16;  /* near-black, cool */
-  --ink-900: #121622;
-  --ink-800: #1C2230;
-  --ink-700: #2B3242;
-  --ink-600: #434C5E;
-  --ink-500: #5C6577;
-  --ink-400: #828B9C;
-  --ink-300: #AAB2C0;
-  --ink-200: #D5DAE2;
-  --ink-150: #E4E8EE;
-  --ink-100: #EEF1F5;
-  --ink-50:  #F6F8FA;
+	--ink-950: #0a0d16; /* near-black, cool */
+	--ink-900: #121622;
+	--ink-800: #1c2230;
+	--ink-700: #2b3242;
+	--ink-600: #434c5e;
+	--ink-500: #5c6577;
+	--ink-400: #828b9c;
+	--ink-300: #aab2c0;
+	--ink-200: #d5dae2;
+	--ink-150: #e4e8ee;
+	--ink-100: #eef1f5;
+	--ink-50: #f6f8fa;
 
-  --paper:   #FAFAF7;  /* warm off-white page */
-  --paper-2: #F2F2EC;  /* slightly deeper paper for bands */
-  --white:   #FFFFFF;
+	--paper: #fafaf7; /* warm off-white page */
+	--paper-2: #f2f2ec; /* slightly deeper paper for bands */
+	--white: #ffffff;
 
-  /* ----------------------------------------------------------------------
+	/* ----------------------------------------------------------------------
      SEMANTIC — surfaces & text
      ---------------------------------------------------------------------- */
-  --bg:        var(--paper);
-  --bg-band:   var(--paper-2);
-  --surface:   var(--white);
-  --surface-2: var(--ink-50);
+	--bg: var(--paper);
+	--bg-band: var(--paper-2);
+	--surface: var(--white);
+	--surface-2: var(--ink-50);
 
-  --fg1: var(--ink-950);   /* primary text / headings */
-  --fg2: var(--ink-500);   /* secondary text */
-  --fg3: var(--ink-400);   /* muted / captions */
-  --fg-invert: #F3F6FF;    /* text on dark / blue */
+	--fg1: var(--ink-950); /* primary text / headings */
+	--fg2: var(--ink-500); /* secondary text */
+	--fg3: var(--ink-400); /* muted / captions */
+	--fg-invert: #f3f6ff; /* text on dark / blue */
 
-  --border:        var(--ink-200);
-  --border-strong: var(--ink-300);
+	--border: var(--ink-200);
+	--border-strong: var(--ink-300);
 
-  --primary:        var(--blue-600);
-  --primary-hover:  var(--blue-700);
-  --primary-press:  var(--blue-800);
-  --primary-tint:   var(--blue-50);
-  --link:           var(--blue-600);
+	--primary: var(--blue-600);
+	--primary-hover: var(--blue-700);
+	--primary-press: var(--blue-800);
+	--primary-tint: var(--blue-50);
+	--link: var(--blue-600);
 
-  --focus-ring: var(--blue-400);
+	--focus-ring: var(--blue-400);
 
-  /* ----------------------------------------------------------------------
+	/* ----------------------------------------------------------------------
      SEMANTIC — status
      ---------------------------------------------------------------------- */
-  --success: #128A4E;
-  --success-tint: #E3F6EC;
-  --warning: #B5730A;
-  --warning-tint: #FBF0D9;
-  --danger:  #D43320;
-  --danger-tint:  #FCE8E5;
+	--success: #128a4e;
+	--success-tint: #e3f6ec;
+	--warning: #b5730a;
+	--warning-tint: #fbf0d9;
+	--danger: #d43320;
+	--danger-tint: #fce8e5;
 
-  /* ----------------------------------------------------------------------
+	/* ----------------------------------------------------------------------
      TYPE — families
      ---------------------------------------------------------------------- */
-  --font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
-  --font-sans:    'Average Sans', 'Helvetica Neue', Arial, sans-serif;
-  --font-serif:   'Newsreader', Georgia, 'Times New Roman', serif;
-  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+	--font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+	--font-sans: "Average Sans", "Helvetica Neue", Arial, sans-serif;
+	--font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+	--font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* TYPE — fluid display scale (clamp: min, fluid, max) */
-  --t-display:  clamp(3rem, 1.5rem + 6vw, 6rem);     /* hero numerals/words */
-  --t-h1:       clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
-  --t-h2:       clamp(1.75rem, 1.2rem + 2.1vw, 2.75rem);
-  --t-h3:       clamp(1.375rem, 1.1rem + 1vw, 1.75rem);
-  --t-h4:       1.25rem;
-  --t-lead:     clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
-  --t-body:     1.0625rem;   /* 17px */
-  --t-body-sm:  0.9375rem;   /* 15px */
-  --t-caption:  0.8125rem;   /* 13px */
-  --t-micro:    0.6875rem;   /* 11px — labels/eyebrows */
+	/* TYPE — fluid display scale (clamp: min, fluid, max) */
+	--t-display: clamp(3rem, 1.5rem + 6vw, 6rem); /* hero numerals/words */
+	--t-h1: clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
+	--t-h2: clamp(1.75rem, 1.2rem + 2.1vw, 2.75rem);
+	--t-h3: clamp(1.375rem, 1.1rem + 1vw, 1.75rem);
+	--t-h4: 1.25rem;
+	--t-lead: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+	--t-body: 1.0625rem; /* 17px */
+	--t-body-sm: 0.9375rem; /* 15px */
+	--t-caption: 0.8125rem; /* 13px */
+	--t-micro: 0.6875rem; /* 11px — labels/eyebrows */
 
-  /* TYPE — weights */
-  --w-light: 300;
-  --w-regular: 400;
-  --w-medium: 500;
-  --w-semibold: 600;
-  --w-bold: 700;
-  --w-extrabold: 800;
+	/* TYPE — weights */
+	--w-light: 300;
+	--w-regular: 400;
+	--w-medium: 500;
+	--w-semibold: 600;
+	--w-bold: 700;
+	--w-extrabold: 800;
 
-  /* TYPE — line heights */
-  --lh-tight: 1.02;
-  --lh-snug: 1.15;
-  --lh-normal: 1.4;
-  --lh-relaxed: 1.65;   /* long-form reading */
+	/* TYPE — line heights */
+	--lh-tight: 1.02;
+	--lh-snug: 1.15;
+	--lh-normal: 1.4;
+	--lh-relaxed: 1.65; /* long-form reading */
 
-  /* TYPE — tracking */
-  --ls-tight: -0.03em;
-  --ls-snug: -0.015em;
-  --ls-normal: 0;
-  --ls-eyebrow: 0.16em;  /* uppercase eyebrows */
+	/* TYPE — tracking */
+	--ls-tight: -0.03em;
+	--ls-snug: -0.015em;
+	--ls-normal: 0;
+	--ls-eyebrow: 0.16em; /* uppercase eyebrows */
 
-  /* ----------------------------------------------------------------------
+	/* ----------------------------------------------------------------------
      SPACING — 4px base scale
      ---------------------------------------------------------------------- */
-  --sp-1: 0.25rem;  --sp-2: 0.5rem;  --sp-3: 0.75rem; --sp-4: 1rem;
-  --sp-5: 1.5rem;   --sp-6: 2rem;    --sp-8: 3rem;    --sp-10: 4rem;
-  --sp-12: 6rem;    --sp-16: 8rem;
+	--sp-1: 0.25rem;
+	--sp-2: 0.5rem;
+	--sp-3: 0.75rem;
+	--sp-4: 1rem;
+	--sp-5: 1.5rem;
+	--sp-6: 2rem;
+	--sp-8: 3rem;
+	--sp-10: 4rem;
+	--sp-12: 6rem;
+	--sp-16: 8rem;
 
-  /* ----------------------------------------------------------------------
+	/* ----------------------------------------------------------------------
      RADII — mostly sharp, small softening
      ---------------------------------------------------------------------- */
-  --r-xs: 3px;
-  --r-sm: 6px;
-  --r-md: 10px;
-  --r-lg: 16px;
-  --r-xl: 24px;
-  --r-pill: 999px;
+	--r-xs: 3px;
+	--r-sm: 6px;
+	--r-md: 10px;
+	--r-lg: 16px;
+	--r-xl: 24px;
+	--r-pill: 999px;
 
-  /* ----------------------------------------------------------------------
+	/* ----------------------------------------------------------------------
      SHADOWS — crisp, low-spread, cool-tinted
      ---------------------------------------------------------------------- */
-  --shadow-xs: 0 1px 2px rgba(10, 13, 22, 0.06);
-  --shadow-sm: 0 1px 3px rgba(10, 13, 22, 0.08), 0 1px 2px rgba(10, 13, 22, 0.04);
-  --shadow-md: 0 4px 14px rgba(10, 13, 22, 0.10);
-  --shadow-lg: 0 12px 32px rgba(10, 13, 22, 0.12);
-  /* electric: blue-tinted glow for primary CTAs / focus */
-  --shadow-blue: 0 6px 20px rgba(26, 75, 245, 0.28);
-  --ring: 0 0 0 3px rgba(77, 131, 255, 0.45);
+	--shadow-xs: 0 1px 2px rgba(10, 13, 22, 0.06);
+	--shadow-sm:
+		0 1px 3px rgba(10, 13, 22, 0.08), 0 1px 2px rgba(10, 13, 22, 0.04);
+	--shadow-md: 0 4px 14px rgba(10, 13, 22, 0.1);
+	--shadow-lg: 0 12px 32px rgba(10, 13, 22, 0.12);
+	/* electric: blue-tinted glow for primary CTAs / focus */
+	--shadow-blue: 0 6px 20px rgba(26, 75, 245, 0.28);
+	--ring: 0 0 0 3px rgba(77, 131, 255, 0.45);
 
-  /* ----------------------------------------------------------------------
+	/* ----------------------------------------------------------------------
      MOTION
      ---------------------------------------------------------------------- */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);   /* confident settle */
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-fast: 120ms;
-  --dur: 200ms;
-  --dur-slow: 360ms;
+	--ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* confident settle */
+	--ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+	--dur-fast: 120ms;
+	--dur: 200ms;
+	--dur-slow: 360ms;
 }
 
 /* =========================================================================
@@ -182,89 +190,95 @@
    ========================================================================= */
 
 .lumen-eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--t-micro);
-  font-weight: var(--w-medium);
-  letter-spacing: var(--ls-eyebrow);
-  text-transform: uppercase;
-  color: var(--primary);
+	font-family: var(--font-mono);
+	font-size: var(--t-micro);
+	font-weight: var(--w-medium);
+	letter-spacing: var(--ls-eyebrow);
+	text-transform: uppercase;
+	color: var(--primary);
 }
 
 .lumen-display {
-  font-family: var(--font-display);
-  font-size: var(--t-display);
-  font-weight: var(--w-extrabold);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-tight);
-  color: var(--fg1);
+	font-family: var(--font-display);
+	font-size: var(--t-display);
+	font-weight: var(--w-extrabold);
+	line-height: var(--lh-tight);
+	letter-spacing: var(--ls-tight);
+	color: var(--fg1);
 }
 
-h1, .lumen-h1 {
-  font-family: var(--font-display);
-  font-size: var(--t-h1);
-  font-weight: var(--w-bold);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-snug);
-  color: var(--fg1);
+h1,
+.lumen-h1 {
+	font-family: var(--font-display);
+	font-size: var(--t-h1);
+	font-weight: var(--w-bold);
+	line-height: var(--lh-snug);
+	letter-spacing: var(--ls-snug);
+	color: var(--fg1);
 }
 
-h2, .lumen-h2 {
-  font-family: var(--font-display);
-  font-size: var(--t-h2);
-  font-weight: var(--w-bold);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-snug);
-  color: var(--fg1);
+h2,
+.lumen-h2 {
+	font-family: var(--font-display);
+	font-size: var(--t-h2);
+	font-weight: var(--w-bold);
+	line-height: var(--lh-snug);
+	letter-spacing: var(--ls-snug);
+	color: var(--fg1);
 }
 
-h3, .lumen-h3 {
-  font-family: var(--font-display);
-  font-size: var(--t-h3);
-  font-weight: var(--w-semibold);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-snug);
-  color: var(--fg1);
+h3,
+.lumen-h3 {
+	font-family: var(--font-display);
+	font-size: var(--t-h3);
+	font-weight: var(--w-semibold);
+	line-height: var(--lh-snug);
+	letter-spacing: var(--ls-snug);
+	color: var(--fg1);
 }
 
 .lumen-lead {
-  font-family: var(--font-serif);
-  font-size: var(--t-lead);
-  font-weight: var(--w-regular);
-  line-height: var(--lh-normal);
-  color: var(--fg2);
+	font-family: var(--font-serif);
+	font-size: var(--t-lead);
+	font-weight: var(--w-regular);
+	line-height: var(--lh-normal);
+	color: var(--fg2);
 }
 
-p, .lumen-body {
-  font-family: var(--font-sans);
-  font-size: var(--t-body);
-  font-weight: var(--w-regular);
-  line-height: var(--lh-normal);
-  color: var(--fg1);
+p,
+.lumen-body {
+	font-family: var(--font-sans);
+	font-size: var(--t-body);
+	font-weight: var(--w-regular);
+	line-height: var(--lh-normal);
+	color: var(--fg1);
 }
 
 /* Long-form reading (articles/essays) uses the serif */
 .lumen-prose {
-  font-family: var(--font-serif);
-  font-size: 1.1875rem;       /* 19px */
-  font-weight: var(--w-regular);
-  line-height: var(--lh-relaxed);
-  color: var(--ink-800);
+	font-family: var(--font-serif);
+	font-size: 1.1875rem; /* 19px */
+	font-weight: var(--w-regular);
+	line-height: var(--lh-relaxed);
+	color: var(--ink-800);
 }
 
-.lumen-mono, code, kbd {
-  font-family: var(--font-mono);
-  font-size: var(--t-body-sm);
-  color: var(--ink-800);
+.lumen-mono,
+code,
+kbd {
+	font-family: var(--font-mono);
+	font-size: var(--t-body-sm);
+	color: var(--ink-800);
 }
 
 .lumen-caption {
-  font-family: var(--font-sans);
-  font-size: var(--t-caption);
-  color: var(--fg3);
+	font-family: var(--font-sans);
+	font-size: var(--t-caption);
+	color: var(--fg3);
 }
 
 /* Highlighter mark — citron under-stroke */
 .lumen-mark {
-  background: linear-gradient(180deg, transparent 58%, var(--citron) 58%);
-  padding: 0 0.05em;
+	background: linear-gradient(180deg, transparent 58%, var(--citron) 58%);
+	padding: 0 0.05em;
 }

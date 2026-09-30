@@ -1,5 +1,9 @@
 ---
-interface Props { size?: number; color?: string; class?: string }
-const { size = 22, color = 'var(--primary)', class: cls } = Astro.props;
+interface Props {
+  size?: number;
+  color?: string;
+  class?: string;
+}
+const { size = 22, color = "var(--primary)", class: cls } = Astro.props;
 ---
 <svg width={size} height={size} viewBox="0 0 120 120" fill="none" class={cls} aria-hidden="true"><path d="M60 6 C65 38, 82 55, 114 60 C82 65, 65 82, 60 114 C55 82, 38 65, 6 60 C38 55, 55 38, 60 6 Z" fill={color}></path></svg>
