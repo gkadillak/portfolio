@@ -1,10 +1,10 @@
-import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
-const accent = z.enum(['blue', 'cyan', 'coral', 'ink']);
+const accent = z.enum(["blue", "cyan", "coral", "ink"]);
 
 const work = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/work' }),
+  loader: glob({ pattern: "**/*.md", base: "./src/content/work" }),
   schema: ({ image }) =>
     z.object({
       n: z.string(),
@@ -12,15 +12,19 @@ const work = defineCollection({
       year: z.string(),
       accent,
       category: z.string(),
-      status: z.enum(['Live', 'In progress', 'Archived']),
+      status: z.enum(["Live", "In progress", "Archived"]),
       tagline: z.string(),
       tags: z.array(z.string()),
       role: z.string(),
       stack: z.array(z.string()),
       timeline: z.string(),
-      links: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
+      links: z
+        .array(z.object({ label: z.string(), href: z.string() }))
+        .default([]),
       summary: z.string(),
-      stats: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
+      stats: z
+        .array(z.object({ value: z.string(), label: z.string() }))
+        .default([]),
       cover: image().optional(),
       gallery: z
         .array(z.object({ label: z.string(), src: image().optional() }))
@@ -29,7 +33,7 @@ const work = defineCollection({
 });
 
 const writing = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/writing' }),
+  loader: glob({ pattern: "**/*.md", base: "./src/content/writing" }),
   schema: z.object({
     n: z.string(),
     kicker: z.string(),

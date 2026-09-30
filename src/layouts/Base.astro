@@ -1,10 +1,14 @@
 ---
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-import { site } from '../data/site';
-import '../styles/global.css';
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { site } from "../data/site";
+import "../styles/global.css";
 
-interface Props { title: string; description?: string; active?: 'home' | 'work' | 'writing' }
+interface Props {
+  title: string;
+  description?: string;
+  active?: "home" | "work" | "writing";
+}
 const { title, description = site.sub, active } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---

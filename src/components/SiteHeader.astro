@@ -1,11 +1,14 @@
 ---
-import Spark from './Spark.astro';
-import { site } from '../data/site';
-interface Props { active?: 'home' | 'work' | 'writing' }
+import { site } from "../data/site";
+import Spark from "./Spark.astro";
+
+interface Props {
+  active?: "home" | "work" | "writing";
+}
 const { active } = Astro.props;
 const nav = [
-  { label: 'Index', href: '/', key: 'home' },
-  { label: 'Writing', href: '/writing', key: 'writing' },
+  { label: "Index", href: "/", key: "home" },
+  { label: "Writing", href: "/writing", key: "writing" },
 ];
 ---
 <header>

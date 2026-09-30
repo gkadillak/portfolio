@@ -2,10 +2,10 @@
 /* Cover — a real image when one is supplied, otherwise the Lumen colour-blocked
    fallback: full-bleed gradient in the project's category colour, giant initial
    and spark watermark. Either way the grid reads as image-led. */
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
-import Spark from './Spark.astro';
-import { accents, type AccentKey } from '../data/site';
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { type AccentKey, accents } from "../data/site";
+import Spark from "./Spark.astro";
 
 interface Props {
   accent: AccentKey;
@@ -19,7 +19,18 @@ interface Props {
   showNumber?: boolean;
   class?: string;
 }
-const { accent, title, n, src, alt, height, widths = [480, 800, 1400], sizes = '100vw', showNumber = false, class: cls } = Astro.props;
+const {
+  accent,
+  title,
+  n,
+  src,
+  alt,
+  height,
+  widths = [480, 800, 1400],
+  sizes = "100vw",
+  showNumber = false,
+  class: cls,
+} = Astro.props;
 const a = accents[accent];
 ---
 <div class:list={['cover', cls]} style={`height:${height}px;background:${a.grad};--ink:${a.ink};--cap:${height * 0.92}px;--spark:${height * 1.4}px;--off-t:${-height * 0.3}px;--off-r:${-height * 0.25}px`}>
