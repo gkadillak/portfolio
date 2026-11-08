@@ -32,22 +32,82 @@ const {
   class: cls,
 } = Astro.props;
 const a = accents[accent];
+const style = [
+  `height:${height}px`,
+  `background:${a.grad}`,
+  `--ink:${a.ink}`,
+  `--cap:${height * 0.92}px`,
+  `--spark:${height * 1.4}px`,
+  `--off-t:${-height * 0.3}px`,
+  `--off-r:${-height * 0.25}px`,
+].join(";");
 ---
-<div class:list={['cover', cls]} style={`height:${height}px;background:${a.grad};--ink:${a.ink};--cap:${height * 0.92}px;--spark:${height * 1.4}px;--off-t:${-height * 0.3}px;--off-r:${-height * 0.25}px`}>
-  {src ? (
-    <Image src={src} alt={alt ?? title} widths={widths} sizes={sizes} class="img" />
-  ) : (
-    <>
-      <Spark class="wm" color="rgba(255,255,255,0.16)" />
-      <span class="cap">{title[0]}</span>
-    </>
-  )}
+
+<div class:list={["cover", cls]} style={style}>
+  {
+    src ? (
+      <Image
+        src={src}
+        alt={alt ?? title}
+        widths={widths}
+        sizes={sizes}
+        class="img"
+      />
+    ) : (
+      <>
+        <Spark class="wm" color="rgba(255,255,255,0.16)" />
+        <span class="cap">{title[0]}</span>
+      </>
+    )
+  }
   {showNumber && n && <span class="n">{n}</span>}
 </div>
+
 <style>
-.cover{position:relative;overflow:hidden;border-radius:9px;width:100%}
-.img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.wm{position:absolute;top:var(--off-t);right:var(--off-r);width:var(--spark);height:var(--spark)}
-.cap{position:absolute;left:14px;bottom:6px;font-family:var(--font-display);font-weight:800;font-size:var(--cap);line-height:.8;color:var(--ink);opacity:.9;letter-spacing:-.04em}
-.n{position:absolute;top:12px;right:14px;font-family:var(--font-mono);font-size:13px;letter-spacing:.1em;color:var(--ink);opacity:.9}
+  .cover {
+    position: relative;
+    overflow: hidden;
+    border-radius: 9px;
+    width: 100%;
+  }
+
+  .img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .wm {
+    position: absolute;
+    top: var(--off-t);
+    right: var(--off-r);
+    width: var(--spark);
+    height: var(--spark);
+  }
+
+  .cap {
+    position: absolute;
+    left: 14px;
+    bottom: 6px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--cap);
+    line-height: 0.8;
+    color: var(--ink);
+    opacity: 0.9;
+    letter-spacing: -0.04em;
+  }
+
+  .n {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    opacity: 0.9;
+  }
 </style>
