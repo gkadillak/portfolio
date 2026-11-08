@@ -1,12 +1,14 @@
+const email = "hey@gkadillak.com";
+
 export const site = {
   name: "Garrett Kadillak",
   role: "Frontend engineer",
-  email: "hey@garrettkadillak.com",
+  email: email,
   hero: ["I build", "the front of", "the web."],
   sub: "A running index of the interfaces I've shipped and the ideas I'm still figuring out. Numbered, dated, and occasionally finished.",
   elsewhere: [
     { label: "GitHub", href: "https://github.com/gkadillak" },
-    { label: "Email", href: "mailto:hey@gkadillak.com" },
+    { label: "Email", href: `mailto:${email}` },
   ],
 } as const;
 
