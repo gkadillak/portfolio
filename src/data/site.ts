@@ -5,7 +5,7 @@ export const site = {
   hero: ["I build", "the front of", "the web."],
   sub: "A running index of the interfaces I've shipped and the ideas I'm still figuring out. Numbered, dated, and occasionally finished.",
   elsewhere: [
-    { label: "GitHub", href: "https://github.com/" },
+    { label: "GitHub", href: "https://github.com/gkadillak" },
     { label: "Email", href: "mailto:hey@gkadillak.com" },
   ],
 } as const;
